@@ -1,1 +1,2 @@
-window.alert("Hello, World!");
+var message = "Hello, World!";
+document.write(message);
