@@ -1,2 +1,1 @@
-var message = "Hello, World!";
-document.write(message);
+document.write("Hello, " + "World!");
