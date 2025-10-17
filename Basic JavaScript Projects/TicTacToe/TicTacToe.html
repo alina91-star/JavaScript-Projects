@@ -7,13 +7,9 @@
     <link rel="stylesheet" href="css/game.css">
     <script src="js/tictactoe.js" defer></script>
 </head>
-
-<body id="body">
-    <!-- This container is needed to overlay our canvas over our table -->
+<body>
     <div class="center-container">
-        <!-- NOTE: Canvas width and height must be within the element -->
         <canvas id="win-lines" width="608" height="608"></canvas>
-
         <table>
             <tr>
                 <td id="0" onclick="placeXorO('0')"></td>
@@ -31,6 +27,7 @@
                 <td id="8" onclick="placeXorO('8')"></td>
             </tr>
         </table>
+        <button onclick="resetGame()">Restart Game</button>
     </div>
 </body>
 </html>
