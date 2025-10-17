@@ -1,93 +1,84 @@
+// Setăm jucătorul activ și array-ul pentru mișcări
 let activePlayer = 'X';
-let gameOver = false;
+let selectedSquares = [];
 
-// Place X or O on the board
-function placeXorO(cellId) {
-    let cell = document.getElementById(cellId);
-    if (!cell.innerHTML && !gameOver) {
-        // Add the image for the current player
-        if (activePlayer === 'X') {
-            cell.innerHTML = `<img src="images/X.png" alt="X">`;
-        } else {
-            cell.innerHTML = `<img src="images/O.png" alt="O">`;
-        }
+// Funcție care plasează X sau O într-un pătrat
+function placeXorO(squareNumber) {
+    let select = document.getElementById(squareNumber);
 
-        playSound('Place.mp3'); // play placement sound
+    // Dacă pătratul nu e ocupat deja
+    if (!select.textContent) {
+        select.textContent = activePlayer; // adaugă X sau O
+        selectedSquares.push(squareNumber + activePlayer); // salvează mișcarea
 
-        checkWinner();
+        // verifică dacă cineva a câștigat
+        checkWinConditions();
 
-        if (!gameOver) {
-            activePlayer = activePlayer === 'X' ? 'O' : 'X';
-        }
+        // schimbă jucătorul activ
+        activePlayer = (activePlayer === 'X') ? 'O' : 'X';
     }
 }
 
-// Play audio safely
-function playSound(filename) {
-    const audio = new Audio(`media/${filename}`);
-    audio.volume = 1.0;
-    // Catch playback errors silently (browser restrictions)
-    audio.play().catch(() => {});
-}
-
-// Check if there is a winner or a tie
-function checkWinner() {
-    const combos = [
-        ['A1', 'A2', 'A3'],
-        ['B1', 'B2', 'B3'],
-        ['C1', 'C2', 'C3'],
-        ['A1', 'B1', 'C1'],
-        ['A2', 'B2', 'C2'],
-        ['A3', 'B3', 'C3'],
-        ['A1', 'B2', 'C3'],
-        ['A3', 'B2', 'C1']
+// Funcție care verifică toate combinațiile de câștig
+function checkWinConditions() {
+    const winCombos = [
+        ['0X', '1X', '2X'], ['3X', '4X', '5X'], ['6X', '7X', '8X'],
+        ['0O', '1O', '2O'], ['3O', '4O', '5O'], ['6O', '7O', '8O'],
+        ['0X', '3X', '6X'], ['1X', '4X', '7X'], ['2X', '5X', '8X'],
+        ['0O', '3O', '6O'], ['1O', '4O', '7O'], ['2O', '5O', '8O'],
+        ['0X', '4X', '8X'], ['2X', '4X', '6X'],
+        ['0O', '4O', '8O'], ['2O', '4O', '6O']
     ];
 
-    for (let combo of combos) {
-        const [a, b, c] = combo.map(id => document.getElementById(id).innerHTML);
-        if (a && a === b && a === c) {
-            gameOver = true;
-
-            // Highlight winning cells
-            combo.forEach(id => {
-                document.getElementById(id).style.backgroundColor = "#aaffaa";
-            });
-
-            // Wait until alert closes, then play Win sound
-            setTimeout(() => {
-                alert(`🎉 Player ${activePlayer} wins!`);
-                // Delay ensures Chrome allows playback
-                setTimeout(() => {
-                    const winAudio = new Audio("media/Win.mp3");
-                    winAudio.play().catch(() => {});
-                }, 150);
-            }, 200);
-
+    // verifică fiecare combinație posibilă
+    for (let combo of winCombos) {
+        if (combo.every(item => selectedSquares.includes(item))) {
+            drawWinLine(combo);
             return;
         }
     }
 
-    // Check for tie
-    const allFilled = [...document.getElementsByTagName('td')].every(td => td.innerHTML !== '');
-    if (allFilled && !gameOver) {
-        gameOver = true;
-        setTimeout(() => {
-            alert("🤝 It's a tie!");
-            setTimeout(() => {
-                const tieAudio = new Audio("media/Tie.mp3");
-                tieAudio.play().catch(() => {});
-            }, 150);
-        }, 200);
+    // dacă toate pătratele sunt completate fără câștigător → egalitate
+    if (selectedSquares.length >= 9) {
+        setTimeout(() => alert("It's a tie! 🤝"), 300);
     }
 }
 
-// Reset the game
+// Funcție care desenează linia de câștig pe canvas
+function drawWinLine(combo) {
+    const canvas = document.getElementById("win-lines");
+    const ctx = canvas.getContext("2d");
+
+    // coordonate pentru fiecare pătrat (ajustate pentru canvas 608x608)
+    const positions = {
+        '0': [100, 100], '1': [304, 100], '2': [508, 100],
+        '3': [100, 304], '4': [304, 304], '5': [508, 304],
+        '6': [100, 508], '7': [304, 508], '8': [508, 508]
+    };
+
+    // prima și ultima poziție din combinație
+    const start = positions[combo[0][0]];
+    const end = positions[combo[2][0]];
+
+    // desenare linie roșie între start și end
+    ctx.beginPath();
+    ctx.moveTo(start[0], start[1]);
+    ctx.lineTo(end[0], end[1]);
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+
+    // mesaj de câștig
+    setTimeout(() => alert(`${activePlayer} wins! 🎉`), 300);
+}
+
+// Poți adăuga opțional o funcție de resetare (buton ulterior)
 function resetGame() {
-    const cells = document.getElementsByTagName('td');
-    for (let cell of cells) {
-        cell.innerHTML = '';
-        cell.style.backgroundColor = 'white';
-    }
+    const squares = document.querySelectorAll('td');
+    squares.forEach(cell => cell.textContent = '');
+    selectedSquares = [];
+    const canvas = document.getElementById("win-lines");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     activePlayer = 'X';
-    gameOver = false;
 }
