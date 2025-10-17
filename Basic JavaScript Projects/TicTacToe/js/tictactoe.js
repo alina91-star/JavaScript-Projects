@@ -5,13 +5,14 @@ let gameOver = false;
 function placeXorO(cellId) {
     let cell = document.getElementById(cellId);
     if (!cell.innerHTML && !gameOver) {
+        // Add the image for the current player
         if (activePlayer === 'X') {
             cell.innerHTML = `<img src="images/X.png" alt="X">`;
-            playSound('Place.mp3');
         } else {
             cell.innerHTML = `<img src="images/O.png" alt="O">`;
-            playSound('Place.mp3');
         }
+
+        playSound('Place.mp3'); // play placement sound
 
         checkWinner();
 
@@ -21,18 +22,15 @@ function placeXorO(cellId) {
     }
 }
 
-// Play sound files safely
+// Play audio safely
 function playSound(filename) {
-    try {
-        const audio = new Audio(`media/${filename}`);
-        audio.volume = 1.0;
-        audio.play();
-    } catch (error) {
-        console.warn("Could not play sound:", error);
-    }
+    const audio = new Audio(`media/${filename}`);
+    audio.volume = 1.0;
+    // Catch playback errors silently (browser restrictions)
+    audio.play().catch(() => {});
 }
 
-// Check for winner or tie
+// Check if there is a winner or a tie
 function checkWinner() {
     const combos = [
         ['A1', 'A2', 'A3'],
@@ -50,19 +48,21 @@ function checkWinner() {
         if (a && a === b && a === c) {
             gameOver = true;
 
-            // Highlight the winning cells
+            // Highlight winning cells
             combo.forEach(id => {
                 document.getElementById(id).style.backgroundColor = "#aaffaa";
             });
 
-            // Alert winner, then play sound safely after alert closes
+            // Wait until alert closes, then play Win sound
             setTimeout(() => {
                 alert(`🎉 Player ${activePlayer} wins!`);
+                // Delay ensures Chrome allows playback
                 setTimeout(() => {
                     const winAudio = new Audio("media/Win.mp3");
-                    winAudio.play().catch(err => console.warn("Win sound blocked:", err));
-                }, 200);
+                    winAudio.play().catch(() => {});
+                }, 150);
             }, 200);
+
             return;
         }
     }
@@ -75,8 +75,8 @@ function checkWinner() {
             alert("🤝 It's a tie!");
             setTimeout(() => {
                 const tieAudio = new Audio("media/Tie.mp3");
-                tieAudio.play().catch(err => console.warn("Tie sound blocked:", err));
-            }, 200);
+                tieAudio.play().catch(() => {});
+            }, 150);
         }, 200);
     }
 }
