@@ -21,7 +21,7 @@ function placeXorO(cellId) {
     }
 }
 
-// Play sound safely
+// Play sound files safely
 function playSound(filename) {
     try {
         const audio = new Audio(`media/${filename}`);
@@ -32,7 +32,7 @@ function playSound(filename) {
     }
 }
 
-// Check if there is a winner or a tie
+// Check for winner or tie
 function checkWinner() {
     const combos = [
         ['A1', 'A2', 'A3'],
@@ -50,16 +50,18 @@ function checkWinner() {
         if (a && a === b && a === c) {
             gameOver = true;
 
-            // Small visual highlight for the winning combo
+            // Highlight the winning cells
             combo.forEach(id => {
                 document.getElementById(id).style.backgroundColor = "#aaffaa";
             });
 
-            // Delay alert slightly, then play sound AFTER alert closes
+            // Alert winner, then play sound safely after alert closes
             setTimeout(() => {
                 alert(`🎉 Player ${activePlayer} wins!`);
-                // play sound AFTER the alert closes
-                setTimeout(() => playSound('Win.mp3'), 100);
+                setTimeout(() => {
+                    const winAudio = new Audio("media/Win.mp3");
+                    winAudio.play().catch(err => console.warn("Win sound blocked:", err));
+                }, 200);
             }, 200);
             return;
         }
@@ -71,7 +73,10 @@ function checkWinner() {
         gameOver = true;
         setTimeout(() => {
             alert("🤝 It's a tie!");
-            setTimeout(() => playSound('Tie.mp3'), 100);
+            setTimeout(() => {
+                const tieAudio = new Audio("media/Tie.mp3");
+                tieAudio.play().catch(err => console.warn("Tie sound blocked:", err));
+            }, 200);
         }, 200);
     }
 }
