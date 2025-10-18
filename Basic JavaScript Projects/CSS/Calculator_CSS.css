@@ -1,0 +1,152 @@
+/* ===== AMB Calculator - Roz, Verde Frunză & Auriu Strălucitor (versiune mai lată) ===== */
+
+body {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Container */
+.calculator {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 400px; /* 🔸 lățime mărită (340 → 400px) */
+  border: 3px solid #a5d6a7;
+  position: relative;
+}
+
+/* Frunzulițe decorative */
+.calculator::before,
+.calculator::after {
+  content: "🌿";
+  position: absolute;
+  font-size: 1.8em;
+  color: #66bb6a;
+  opacity: 0.8;
+}
+
+.calculator::before {
+  top: -15px;
+  left: -10px;
+  transform: rotate(-20deg);
+}
+
+.calculator::after {
+  bottom: -10px;
+  right: -10px;
+  transform: rotate(15deg);
+}
+
+/* Titlu */
+.title {
+  text-align: center;
+  color: #2e7d32;
+  font-weight: 700;
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #ffd700;
+  white-space: nowrap; /* 🔸 păstrează textul și floricelele pe un singur rând */
+}
+
+/* Ecran */
+input[type="text"] {
+  width: 100%;
+  height: 65px;
+  background: #f1f8e9;
+  color: #1b5e20;
+  font-size: 2em;
+  text-align: right;
+  border: 2px solid #a5d6a7;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-right: 10px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Butoane */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 65px;
+  gap: 10px;
+}
+
+.buttons input {
+  font-size: 1.3em;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #fff0f5, #e8f5e9);
+  color: #33691e;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 3px 3px 6px #b2dfdb, -3px -3px 6px #fff;
+  transition: all 0.2s ease;
+}
+
+.buttons input:hover {
+  background: linear-gradient(145deg, #c8e6c9, #fff);
+  transform: translateY(-2px);
+}
+
+/* Operatorii - auriu strălucitor */
+.operator {
+  background: linear-gradient(135deg, #ffcc00, #ffd700, #f9a825);
+  background-size: 200% 200%;
+  color: #4e342e !important;
+  font-weight: 700;
+  animation: shine 3s infinite linear;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 3px 3px 6px #d4a74e;
+}
+
+/* Efect sclipire aurie */
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Buton AC - roz intens */
+.clear {
+  background: linear-gradient(145deg, #f06292, #ec407a) !important;
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 0 6px rgba(236, 64, 122, 0.6);
+}
+
+/* Buton = - auriu cu reflex verde */
+.equal {
+  grid-column: 4 / 5;
+  grid-row: 2 / span 4;
+  background: linear-gradient(145deg, #ffeb3b, #ffd700, #f57f17);
+  color: #4e342e !important;
+  font-size: 1.6em;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(255, 223, 0, 0.8), 3px 3px 8px #d4a74e;
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: shine 4s infinite linear;
+}
+
+.equal:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 223, 0, 0.9);
+}
+
+/* Responsivitate */
+@media (max-width: 450px) {
+  .calculator {
+    width: 95%;
+  }
+  .title {
+    font-size: 1.4em;
+  }
+  input[type="text"] {
+    font-size: 1.8em;
+  }
+}
