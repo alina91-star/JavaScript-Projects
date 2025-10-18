@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +10,21 @@
 
   <div class="calculator">
     <form name="calc">
+      <!-- Title -->
       <h2 class="title">🌸🍃 AMB Calculator 🍃🌸</h2>
+
+      <!-- Display screen -->
       <input type="text" name="display" readonly value="0">
 
+      <!-- Calculator buttons -->
       <div class="buttons">
+        <!-- Math operators -->
         <input type="button" value="+" class="operator" onclick="addOperator('+')">
         <input type="button" value="-" class="operator" onclick="addOperator('-')">
         <input type="button" value="×" class="operator" onclick="addOperator('*')">
         <input type="button" value="÷" class="operator" onclick="addOperator('/')">
 
+        <!-- Number buttons -->
         <input type="button" value="7" onclick="addNumber('7')">
         <input type="button" value="8" onclick="addNumber('8')">
         <input type="button" value="9" onclick="addNumber('9')">
@@ -33,42 +39,71 @@
 
         <input type="button" value="0" onclick="addNumber('0')">
         <input type="button" value="." onclick="addDot()">
-        <input type="button" value="AC" class="clear" onclick="clearDisplay()">
 
+        <!-- Clear and equal buttons -->
+        <input type="button" value="AC" class="clear" onclick="clearDisplay()">
         <input type="button" value="=" class="equal" onclick="calculateResult()">
       </div>
     </form>
   </div>
 
   <script>
+    // ==============================================
+    //   AMB CALCULATOR - JAVASCRIPT FUNCTIONALITY
+    // ==============================================
+
+    /**
+     * Adds a number to the calculator display.
+     * If the current display shows "0", replace it with the new number.
+     * Otherwise, append the number to the existing display value.
+     */
     function addNumber(num) {
       if (calc.display.value === "0") {
-        calc.display.value = num;
+        calc.display.value = num; // Replace 0 with the first entered number
       } else {
-        calc.display.value += num;
+        calc.display.value += num; // Append number to the display
       }
     }
 
+    /**
+     * Adds an operator (+, -, ×, ÷) to the expression.
+     * Appends the operator at the end of the current display value.
+     */
     function addOperator(op) {
       calc.display.value += op;
     }
 
+    /**
+     * Adds a decimal point to the number.
+     * Ensures that only one decimal point exists in the current number.
+     */
     function addDot() {
       const val = calc.display.value;
+
+      // Prevent adding multiple decimals in the same number
       if (!val.endsWith('.') && !val.split(/[\+\-\*\/]/).pop().includes('.')) {
         calc.display.value += '.';
       }
     }
 
+    /**
+     * Clears the calculator display and resets it to "0".
+     * Works like the "AC" (All Clear) button.
+     */
     function clearDisplay() {
       calc.display.value = "0";
     }
 
+    /**
+     * Evaluates the mathematical expression in the display.
+     * Uses JavaScript's eval() function to perform the calculation.
+     * If the expression is invalid, displays "Error".
+     */
     function calculateResult() {
       try {
-        calc.display.value = eval(calc.display.value);
+        calc.display.value = eval(calc.display.value); // Calculate the result
       } catch {
-        calc.display.value = "Error";
+        calc.display.value = "Error"; // Show error if invalid expression
       }
     }
   </script>
