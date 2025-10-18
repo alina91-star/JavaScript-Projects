@@ -1,0 +1,135 @@
+/* =========================================================
+   AMB Pizza House - CSS
+   Animated rainbow background + English comments
+   ========================================================= */
+
+/* General setup */
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  text-align: center;
+  color: #333;
+}
+
+/* Rainbow animated background */
+#menuBG {
+  background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fdfbfb);
+  background-size: 1000% 1000%;
+  animation: rainbowMove 18s ease infinite alternate;
+  padding: 20px;
+}
+
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Header styling */
+#page-header {
+  position: relative;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 4px solid gold;
+}
+
+#page-header h1 {
+  color: #d32f2f;
+  margin: 0;
+  font-size: 2rem;
+}
+
+#page-header h2 {
+  color: #4a148c;
+  margin: 5px 0;
+}
+
+.subtitle {
+  color: #2e7d32;
+  font-style: italic;
+}
+
+/* Superhero images at top */
+.hero {
+  position: absolute;
+  width: 130px;
+  top: 10px;
+}
+
+.hero-left {
+  left: 10px;
+}
+
+.hero-right {
+  right: 10px;
+}
+
+/* Menu boxes */
+.menu {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 3px solid gold;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px;
+  vertical-align: top;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.menu h3 {
+  color: #d32f2f;
+}
+
+.note {
+  color: #2e7d32;
+  font-style: italic;
+}
+
+/* Buttons */
+#btnOrder {
+  background: #42a5f5;
+  border: 3px solid #1e88e5;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#btnOrder:hover {
+  background: #81c784;
+  transform: scale(1.05);
+}
+.button-container {
+  margin: 20px;
+}
+
+/* Order summary */
+#cart {
+  width: 60%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid gold;
+  border-radius: 12px;
+  margin: 25px auto;
+  padding: 15px;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+#totalPrice {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Footer */
+#page-footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0), #fff9c4);
+  padding: 15px;
+  border-top: 3px solid gold;
+  position: relative;
+}
+
+.footer-img {
+  width: 100%;
+  max-width: 700px;
+}

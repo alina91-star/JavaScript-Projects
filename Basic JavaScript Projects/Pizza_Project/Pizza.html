@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMB Pizza House - Healthy Superhero Pizza for Kids</title>
+  <link rel="stylesheet" href="Pizza_CSS/Pizza.css">
+  <script src="Pizza_JavaScript/Pizza.js" defer></script>
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header id="page-header">
+    <img src="images/superhero-boy.png" alt="Superhero Boy" class="hero hero-left">
+    <img src="images/superhero-girl.png" alt="Superhero Girl" class="hero hero-right">
+    <h1>🍕 AMB Pizza House 🍕</h1>
+    <h2>Healthy Superhero Pizza for Kids</h2>
+    <p class="subtitle">Build your own pizza and power up with healthy ingredients!</p>
+  </header>
+
+  <!-- ================= ORDER FORM ================= -->
+  <main id="menuBG">
+    <form id="frmMenu">
+
+      <!-- SIZE -->
+      <section class="menu">
+        <h3>Size</h3>
+        <label><input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Power Pizza — £6.00</label><br>
+        <label><input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Hero Pizza — £10.00</label><br>
+        <label><input class="size" type="radio" name="Size" value="Large Pizza"> Large Champion Pizza — £14.00</label><br>
+        <label><input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large Super Pizza — £16.00</label>
+      </section>
+
+      <!-- CRUST -->
+      <section class="menu">
+        <h3>Crust</h3>
+        <label><input type="radio" name="Crust" value="Whole Grain Shield"> Whole Grain Shield</label><br>
+        <label><input type="radio" name="Crust" value="Protein Hero Crust"> Protein Hero Crust +£2.00</label><br>
+        <label><input type="radio" name="Crust" value="Garlic Glow Crust"> Garlic Glow Crust</label><br>
+        <label><input type="radio" name="Crust" value="Cheesy Sunshine Crust"> Cheesy Sunshine Crust +£3.00</label>
+      </section>
+
+      <!-- SAUCE -->
+      <section class="menu">
+        <h3>Sauce</h3>
+        <label><input type="radio" name="Sauce" value="Tomato Laser Sauce"> Tomato Laser Sauce</label><br>
+        <label><input type="radio" name="Sauce" value="Green Power Pesto"> Green Power Pesto</label><br>
+        <label><input type="radio" name="Sauce" value="White Cloud Sauce"> White Cloud Sauce</label>
+      </section>
+
+      <!-- CHEESE -->
+      <section class="menu">
+        <h3>Cheese</h3>
+        <label><input type="radio" name="Cheese" value="Regular Hero Cheese"> Regular Hero Cheese</label><br>
+        <label><input type="radio" name="Cheese" value="Extra Light Cheese"> Extra Light Cheese +£2.00</label><br>
+        <label><input type="radio" name="Cheese" value="No Cheese"> No Cheese</label>
+      </section>
+
+      <!-- VEGGIES -->
+      <section class="menu">
+        <h3>Veggies (Choose your hero powers!)</h3>
+        <p class="note">First veggie is free, then +£1 each additional.</p>
+        <label><input type="checkbox" name="Veggies" value="Super Spinach Power"> Super Spinach Power</label><br>
+        <label><input type="checkbox" name="Veggies" value="Mushroom Boost"> Mushroom Boost</label><br>
+        <label><input type="checkbox" name="Veggies" value="Rainbow Veggie Beam"> Rainbow Veggie Beam</label><br>
+        <label><input type="checkbox" name="Veggies" value="Broccoli Blast"> Broccoli Blast</label>
+      </section>
+
+      <!-- PROTEIN -->
+      <section class="menu">
+        <h3>Protein Toppings</h3>
+        <p class="note">First protein is free, then +£1 each additional.</p>
+        <label><input type="checkbox" name="Protein" value="Grilled Hero Chicken"> Grilled Hero Chicken</label><br>
+        <label><input type="checkbox" name="Protein" value="Lean Turkey Strength"> Lean Turkey Strength</label><br>
+        <label><input type="checkbox" name="Protein" value="Tofu Titan Cubes"> Tofu Titan Cubes</label><br>
+        <label><input type="checkbox" name="Protein" value="Power Egg Protein"> Power Egg Protein</label>
+      </section>
+
+      <!-- BUTTON -->
+      <div class="button-container">
+        <button type="button" id="btnOrder" onclick="getReceipt()">Place Order</button>
+      </div>
+    </form>
+
+    <!-- RECEIPT -->
+    <section id="cart">
+      <div id="showText">Your order summary will appear here...</div>
+      <div id="totalPrice"></div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="page-footer">
+    <img src="images/superhero-family.png" alt="Superhero Family" class="footer-img">
+    <p>© 2025 AMB Pizza House | Eat Smart, Be Super! 💪</p>
+  </footer>
+</body>
+</html>
