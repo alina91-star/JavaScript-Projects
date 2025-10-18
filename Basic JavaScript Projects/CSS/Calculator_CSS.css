@@ -1,147 +1,155 @@
-/* ===== AMB Calculator - Roz, Verde Frunză & Auriu Strălucitor (versiune mai lată) ===== */
+/* ============================================
+   AMB CALCULATOR - STYLISH PINK, GREEN & GOLD
+   ============================================ */
 
+/* ----- General Page Styling ----- */
 body {
-  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0); /* Soft pink gradient background */
+  font-family: "Poppins", sans-serif; /* Clean modern font */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  justify-content: center; /* Center calculator horizontally */
+  align-items: center; /* Center calculator vertically */
+  height: 100vh; /* Full screen height */
   margin: 0;
 }
 
-/* Container */
+/* ----- Calculator Container ----- */
 .calculator {
-  background: white;
+  background: white; /* Main calculator background */
   padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  width: 400px; /* 🔸 lățime mărită (340 → 400px) */
-  border: 3px solid #a5d6a7;
+  border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow for 3D look */
+  width: 400px; /* Slightly wider so both flowers fit on title line */
+  border: 3px solid #a5d6a7; /* Green leafy border accent */
   position: relative;
 }
 
-/* Frunzulițe decorative */
+/* ----- Decorative Leaf Emojis ----- */
 .calculator::before,
 .calculator::after {
-  content: "🌿";
+  content: "🌿"; /* Leaf emoji on corners */
   position: absolute;
   font-size: 1.8em;
-  color: #66bb6a;
+  color: #66bb6a; /* Green leaf tone */
   opacity: 0.8;
 }
 
+/* Top left leaf */
 .calculator::before {
   top: -15px;
   left: -10px;
   transform: rotate(-20deg);
 }
 
+/* Bottom right leaf */
 .calculator::after {
   bottom: -10px;
   right: -10px;
   transform: rotate(15deg);
 }
 
-/* Titlu */
+/* ----- Title Styling ----- */
 .title {
   text-align: center;
-  color: #2e7d32;
+  color: #2e7d32; /* Deep green text */
   font-weight: 700;
   font-size: 1.6em;
   margin-bottom: 20px;
   letter-spacing: 1px;
-  text-shadow: 0 0 10px #ffd700;
-  white-space: nowrap; /* 🔸 păstrează textul și floricelele pe un singur rând */
+  text-shadow: 0 0 10px #ffd700; /* Gold glow behind text */
+  white-space: nowrap; /* Keeps the two flowers on the same line */
 }
 
-/* Ecran */
+/* ----- Display Screen ----- */
 input[type="text"] {
   width: 100%;
   height: 65px;
-  background: #f1f8e9;
-  color: #1b5e20;
+  background: #f1f8e9; /* Pale green for freshness */
+  color: #1b5e20; /* Dark green text for readability */
   font-size: 2em;
   text-align: right;
   border: 2px solid #a5d6a7;
   border-radius: 10px;
   margin-bottom: 15px;
   padding-right: 10px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft inner shadow */
 }
 
-/* Butoane */
+/* ----- Button Layout (Grid) ----- */
 .buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
   grid-auto-rows: 65px;
-  gap: 10px;
+  gap: 10px; /* Space between buttons */
 }
 
+/* ----- General Button Style ----- */
 .buttons input {
   font-size: 1.3em;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(145deg, #fff0f5, #e8f5e9);
-  color: #33691e;
+  background: linear-gradient(145deg, #fff0f5, #e8f5e9); /* Soft pink-to-green tone */
+  color: #33691e; /* Deep green text */
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 3px 3px 6px #b2dfdb, -3px -3px 6px #fff;
+  box-shadow: 3px 3px 6px #b2dfdb, -3px -3px 6px #fff; /* Subtle 3D emboss effect */
   transition: all 0.2s ease;
 }
 
+/* Button hover effect */
 .buttons input:hover {
-  background: linear-gradient(145deg, #c8e6c9, #fff);
-  transform: translateY(-2px);
+  background: linear-gradient(145deg, #c8e6c9, #fff); /* Brighter tone when hovered */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
-/* Operatorii - auriu strălucitor */
+/* ----- Gold Operator Buttons (+, -, ×, ÷) ----- */
 .operator {
-  background: linear-gradient(135deg, #ffcc00, #ffd700, #f9a825);
+  background: linear-gradient(135deg, #ffcc00, #ffd700, #f9a825); /* Rich metallic gold */
   background-size: 200% 200%;
-  color: #4e342e !important;
+  color: #4e342e !important; /* Deep brownish gold text */
   font-weight: 700;
-  animation: shine 3s infinite linear;
-  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 3px 3px 6px #d4a74e;
+  animation: shine 3s infinite linear; /* Subtle shimmer animation */
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 3px 3px 6px #d4a74e; /* Golden glow effect */
 }
 
-/* Efect sclipire aurie */
+/* ----- Animated Shine Effect for Gold Buttons ----- */
 @keyframes shine {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Buton AC - roz intens */
+/* ----- Clear Button (AC) - Pink Accent ----- */
 .clear {
-  background: linear-gradient(145deg, #f06292, #ec407a) !important;
+  background: linear-gradient(145deg, #f06292, #ec407a) !important; /* Bright pink gradient */
   color: white !important;
   font-weight: 700;
   box-shadow: 0 0 6px rgba(236, 64, 122, 0.6);
 }
 
-/* Buton = - auriu cu reflex verde */
+/* ----- Equal Button (=) - Gold Highlight with Green Touch ----- */
 .equal {
   grid-column: 4 / 5;
-  grid-row: 2 / span 4;
-  background: linear-gradient(145deg, #ffeb3b, #ffd700, #f57f17);
+  grid-row: 2 / span 4; /* Taller button covering 4 rows */
+  background: linear-gradient(145deg, #ffeb3b, #ffd700, #f57f17); /* Golden metallic tone */
   color: #4e342e !important;
   font-size: 1.6em;
   font-weight: 700;
-  box-shadow: 0 0 12px rgba(255, 223, 0, 0.8), 3px 3px 8px #d4a74e;
+  box-shadow: 0 0 12px rgba(255, 223, 0, 0.8), 3px 3px 8px #d4a74e; /* Strong gold glow */
   transition: transform 0.2s, box-shadow 0.3s;
-  animation: shine 4s infinite linear;
+  animation: shine 4s infinite linear; /* Same gold shimmer effect */
 }
 
+/* Hover animation for Equal button */
 .equal:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 223, 0, 0.9);
 }
 
-/* Responsivitate */
+/* ----- Responsive Design for Mobile Devices ----- */
 @media (max-width: 450px) {
   .calculator {
-    width: 95%;
+    width: 95%; /* Fit smaller screens */
   }
   .title {
     font-size: 1.4em;
