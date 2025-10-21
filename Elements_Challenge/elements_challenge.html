@@ -1,0 +1,79 @@
+<!-- 
+    elements_challenge.html
+    This example demonstrates how to access and modify HTML elements
+    using the Document Object Model (DOM).
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements Challenge</title>
+
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin-top: 100px;
+        }
+
+        h2 {
+            color: #004aad;
+        }
+
+        #message {
+            color: #007b00;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #004aad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0066ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Heading -->
+    <h2>DOM Elements Challenge</h2>
+
+    <!-- Paragraph to be changed dynamically -->
+    <p id="message">Click the button to change this message.</p>
+
+    <!-- Button triggers JavaScript function -->
+    <button onclick="changeText()">Change Text</button>
+
+    <script>
+        /* 
+           Function: changeText()
+           Description: Uses document.getElementById() to access an element
+                        and change its text and style dynamically.
+        */
+        function changeText() {
+            // Access the <p> element by its ID
+            var element = document.getElementById("message");
+
+            // Change the text inside the element
+            element.innerHTML = "🎉 Congratulations! You just used the DOM to change content!";
+
+            // Change its color using the style property
+            element.style.color = "darkorange";
+
+            // Change the font size for extra visual effect
+            element.style.fontSize = "22px";
+        }
+    </script>
+</body>
+</html>

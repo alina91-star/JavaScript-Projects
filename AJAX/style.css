@@ -1,40 +1,50 @@
+/* 
+    style.css
+    This file provides the styling for ajax_basic.html.
+    It sets colors, alignment, and layout for the main content box and button.
+*/
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #ffffff;
-    text-align: center;
-    margin-top: 100px;
+    text-align: center; /* Centers inline content */
+    display: flex; /* Allows perfect centering on the page */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
+.main {
+    text-align: center; /* Ensures internal text alignment */
 }
 
 h2 {
-    color: #4B0082;
-    font-weight: bold;
+    color: #12007f;
+    margin-bottom: 20px;
 }
 
-#box {
-    background-color: #E6E6FA;
-    border: 2px solid #C8A2C8;
-    border-radius: 25px;
-    box-shadow: 3px 3px 10px rgba(150, 100, 255, 0.3);
-    width: 500px;
-    margin: 20px auto;
-    padding: 25px;
+/* The content box that holds the button or AJAX-loaded text */
+.content {
+    background-color: #f4e9ff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #d3b9ff;
+    width: 320px;
+    padding: 20px;
+    margin: 0 auto; /* Ensures it's centered */
 }
 
-#demo {
-    color: #4B0082;
-    font-size: 16px;
-}
-
-button {
-    background-color: #6495ED;
-    color: #fff;
+/* The button styling */
+.button {
+    background-color: #2970ff;
+    color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     padding: 10px 20px;
-    font-size: 16px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #4169E1;
+.button:hover {
+    background-color: #1a4ed8;
 }

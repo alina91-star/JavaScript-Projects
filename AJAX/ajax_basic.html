@@ -1,31 +1,50 @@
+<!-- 
+    ajax_basic.html
+    This file demonstrates a simple AJAX example using an XMLHttpRequest 
+    to dynamically load content into this page without refreshing.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJAX Example</title>
+    <title>Basic AJAX Demo</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-        function loadContent() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("demo").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "content.html", true);
-            xhttp.send();
-        }
-    </script>
 </head>
-
 <body>
-    <h2>Get The Latest Content:</h2>
+    <!-- Main content area -->
+    <div class="main">
+        <h2>Get The Latest Content:</h2>
 
-    <div id="box">
-        <div id="demo">
-            <button onclick="loadContent()">Get Content</button>
+        <!-- This is the content box where AJAX will display new data -->
+        <div class="content" id="content">
+            <!-- Button triggers the AJAX function when clicked -->
+            <input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();" />
         </div>
     </div>
+
+    <!-- JavaScript section for AJAX functionality -->
+    <script type="text/javascript">
+        // STEP 1: Create a new XMLHttpRequest object
+        var xhttp = new XMLHttpRequest();
+
+        // STEP 2: Prepare the AJAX request using the GET method to load "content.html"
+        xhttp.open("GET", "content.html");
+
+        // STEP 3: Define the function that runs every time the readyState changes
+        xhttp.onreadystatechange = function() {
+            // When readyState = 4 (done) and status = 200 (OK), display the response
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                document.getElementById('content').innerHTML = xhttp.responseText;
+            }
+        };
+
+        // STEP 4: Function called when the user clicks the button
+        function getContent() {
+            xhttp.send(); // Send the AJAX request
+            document.getElementById('btn_content').style.display = 'none'; // Hide button after click
+        }
+    </script>
 </body>
 </html>
