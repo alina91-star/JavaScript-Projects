@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # JavaScript Projects
 
 These are some basic projects I created while learning and practicing JavaScript fundamentals.
@@ -41,11 +41,7 @@ The classic Tic-Tac-Toe game built with JavaScript. Two players take turns marki
 ### Calculator  
 A basic calculator built with HTML, CSS, and JavaScript. Users can perform addition, subtraction, multiplication, and division through a clean, responsive interface.
 
----
 
-### Made by 💻 Alina-Maria Barbuta  
-With passion and creativity using **JavaScript** ✨
-=======
 JavaScript Projects
 
 These are some basic projects I created while learning and practicing JavaScript fundamentals.
@@ -101,6 +97,5 @@ Calculator
 
 A basic calculator built with HTML, CSS, and JavaScript. Users can perform addition, subtraction, multiplication, and division through a clean, responsive interface.
 
-Vrei să includ și linkuri directe către fiecare proiect din repository-ul tău GitHub (de exemplu, linkul spre folderul “Pizza_Project” etc.), astfel încât titlurile din lista de sus să fie clicabile?
-Pot genera automat acele linkuri corecte pentru tine.
->>>>>>> b3f465b72f2568c612e191f969ae63ea9bdd580a
+
+
